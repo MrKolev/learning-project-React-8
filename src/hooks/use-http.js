@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 
-export const useHttp = (requestConfig, applyDta) => {
+export const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const sendRequest = async () => {
+    const sendRequest = useCallback(async (requestConfig, applyDta) => {
         setIsLoading(true);
         setError(null);
         try {
@@ -30,7 +30,7 @@ export const useHttp = (requestConfig, applyDta) => {
             setError(err.message || 'Something went wrong!');
         }
         setIsLoading(false);
-    };
+    },[])
 
     return {
         isLoading,
