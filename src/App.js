@@ -6,15 +6,9 @@ import { useHttp } from './hooks/use-http';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-
-
-
   const { isLoading, error, sendRequest } = useHttp();
 
-
-
   useEffect(() => {
-
     const transformTask = (data) => {
       const loadedTasks = [];
 
@@ -47,8 +41,7 @@ function App() {
             }
           );
           setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
-        }
-        }
+        }}
 
         items={tasks}
         loading={isLoading}
